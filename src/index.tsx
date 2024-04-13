@@ -18,10 +18,40 @@ export const HelloWorld: FC = () => {
     inspector: "checkbox"
   })
 
+//  const initialValue = [{ id: 1, value: 'Initial Value' }];
+  const [selectedOption, setSelectedOption] = Retool.useStateEnumeration({
+    name: 'color',
+    enumDefinition: ['red', 'green', 'blue'],
+    initialValue: 'red',
+    enumLabels: {
+      red: 'Red Color',
+      green: 'Green Color',
+      blue: 'Blue Color'
+    },
+    inspector: 'select',
+    description: 'Select a color',
+    label: 'Color'
+  });
+
   return (
-    <div className="test" style={{ border: showBorder ? "1px solid black" : "",}}>
+    <div className="test" style={{ 
+      border: showBorder ? "1px solid black" : "",
+      background: selectedOption ? selectedOption : "",
+    }}>
       <h2>Hello {name}!</h2>
       <div>How is your day, {name}?</div>
+      <div>
+      {/* Render your component UI here */}
+      <label>{selectedOption}</label>
+      <select
+        value={selectedOption}
+        onChange={(e) => setSelectedOption(e.target.value)}
+      >
+        <option value="red">Red Color</option>
+        <option value="green">Green Color</option>
+        <option value="blue">Blue Color</option>
+      </select>
+    </div>
     </div>
   )
 }
