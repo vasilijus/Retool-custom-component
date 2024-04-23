@@ -3,6 +3,7 @@ import { type FC } from 'react'
 import ReactDOM from 'react-dom';
 import { Retool } from '@tryretool/custom-component-support'
 
+import Button from './components/Button/Button'
 import './styles/styles.css';
 
 export const HelloWorld: FC = () => {
@@ -38,15 +39,19 @@ export const HelloWorld: FC = () => {
       border: showBorder ? "1px solid black" : "",
       background: selectedOption ? selectedOption : "",
     }}>
+    <button />
       <h2>Hello {name}!</h2>
-      <div>How is your day, {name}?</div>
+      <div>How's yousr day, {name}?</div>
       <div>
       {/* Render your component UI here */}
       <label>{selectedOption}</label>
+      <br />
+      <br/>
       <select
         value={selectedOption}
         onChange={(e) => setSelectedOption(e.target.value)}
       >
+      <button />
         <option value="red">Red Color</option>
         <option value="green">Green Color</option>
         <option value="blue">Blue Color</option>
